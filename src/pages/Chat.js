@@ -3,17 +3,38 @@ import { useState, useEffect } from 'react';
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { Header } from '../components/Header'
 import { Post } from '../components/Post'
+import Axios from 'axios';
 
 export function Chat(props) {
     const [seconds, setSeconds] = useState(0);
     const [minuties, setMinuties] = useState(0);
     const [timer, setTimer] = useState("00:00");
+    const [question, setQuestion] = useState("");
+    const [texts, setTexts] = useState([]);
+    const [statment, setStatment] = useState(false);
+    const [dicas, setDicas] = useState([]);
+    const [solution, setSolution] = useState();
+    const [token, setToken] = useState();
+
+    useEffect(() => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const type = urlParams.get("type")
+
+        if (localStorage !== null) {
+            setToken(localStorage.getItem('token'));
+        }
+        Axios.get(`https://chatbot-backend-hb2o.onrender.com/questions/random?type=${type}`)
+            .then(res => {
+                setQuestion(res.data.question)
+            })
+            .catch((err) => console.log(err))
+    }, [])
 
     useEffect(() => {
 
         const clock = setTimeout(() => {
             setSeconds(seconds + 1);
-            if (seconds+1 > 59) {
+            if (seconds + 1 > 59) {
                 setSeconds(0);
                 setMinuties(minuties + 1);
             }
@@ -30,6 +51,52 @@ export function Chat(props) {
         return () => clearTimeout(clock);
     })
 
+
+    // console.log(question)
+    if (!statment && question !== "") {
+        setTexts((texts) => [...texts, question.statement])
+        setDicas(question.tips)
+        setSolution(question.solution)
+        setStatment(true)
+    }
+
+    const tip = () => {
+        // console.log(dicas.length)
+        if (dicas.length > 0) {
+            const dica = dicas.shift()
+            setTexts((texts) => [...texts, dica])
+        } else {
+            var tip = document.getElementById('tip')
+            tip.setAttribute("disabled", "")
+        }
+    }
+
+    const solut = () => {
+        if (solution !== undefined) {
+            setTexts((texts) => [...texts, solution])
+            var tip = document.getElementById('solution')
+            tip.setAttribute("disabled", "")
+        }
+    }
+
+    // console.log(token)
+    const nextQuestion = async (e) => {
+        if (minuties > 1 && token !== undefined) {
+            const allseconds = minuties * 60 + seconds
+            e.preventDefault()
+            await Axios.patch(`https://chatbot-backend-hb2o.onrender.com/users/addQuestion/${question.id}`,
+                {
+                    time: allseconds
+                }, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+        } else {
+            window.location.reload(false)
+        }
+    }
+
     return (
         <Container fluid className="h-100">
             <Row>
@@ -40,7 +107,7 @@ export function Chat(props) {
                     <Col xs={4} sm={4} md={4} lg={4} xl={4} className='questions-info'>
 
                         <button disabled className='btn-info'>
-                            Questão de 2016.2
+                            Questão de {question.period}
                         </button>
                     </Col>
                     <Col xs={4} sm={4} md={4} lg={4} xl={4}>
@@ -53,20 +120,26 @@ export function Chat(props) {
                 </Row>
                 <Row className='chating'>
                     <Col xs={12} sm={12} md={12} lg={12} xl={12}>
-                        <Post />
+                        {
+                            texts.map((text, i) => {
+                                return (
+                                    <Post key={i} text={text} />
+                                )
+                            })
+                        }
                     </Col>
                 </Row>
                 <Row className='buttons'>
                     <Col xs={2} sm={2} md={2} lg={2} xl={2}>
                     </Col>
                     <Col xs={8} sm={8} md={8} lg={8} xl={8} className='action-buttons'>
-                        <Button type='button'>
+                        <Button type='button' id='tip' onClick={tip}>
                             Pedir Dica
                         </Button>
-                        <Button>
+                        <Button type='button' id='solution' onClick={solut}>
                             Mostrar Solução
                         </Button>
-                        <Button>
+                        <Button type='button' id='next-question' onClick={nextQuestion}>
                             Próxima Questão
                         </Button>
                     </Col>
