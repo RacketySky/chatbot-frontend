@@ -120,6 +120,7 @@ body {
 .chating {
   height: 80%;
   overflow-y: auto;
+  flex-wrap: wrap-reverse !important;
 }
 .buttons {
   display: flex;
@@ -229,4 +230,24 @@ body {
 .checkbox-reg {
   align-self: center;
   font-size: 17px;
+}
+
+.bm-menu {
+  overflow: hidden !important;
+}
+
+.menu-item {
+  overflow: hidden;
+  margin: 10px 0px;
+}
+
+.loading {
+  position: absolute;
+  top: 0;
+  z-index: 10000;
+  background-color: #4f4f4f;
+  opacity: 0.5;
+  display: flex;
+  align-items: center;
+  text-align: center;
 }
