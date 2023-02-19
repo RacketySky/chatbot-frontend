@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Image, Button } from 'react-bootstrap';
 import { Checkbox, FormControl, TextField } from '@mui/material';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import axios from 'axios';
+import { Loading } from '../components/Loading';
 
 export function Singin(props) {
     const [email, setEmail] = useState();
@@ -19,6 +21,26 @@ export function Singin(props) {
             mat.removeAttribute("disabled")
         }
     })
+
+    const register = async (e) => {
+        e.preventDefault();
+        document.getElementById('singin-btn').setAttribute('disabled', '');
+        document.getElementById('loading').removeAttribute('hidden');
+        if (checked) {
+            setReg(0)
+        }
+        await axios.post('https://chatbot-backend-hb2o.onrender.com/users', {
+            name: name,
+            email: email,
+            password: password,
+            registration: reg
+        })
+            .then(res => {
+                window.location.href = `/`
+                console.log(res)
+            })
+            .catch(err => console.log(err))
+    }
     return (
         <Container fluid className='background-login'>
             <Row className='w-100 h-100 row-login'>
@@ -75,12 +97,13 @@ export function Singin(props) {
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                             />
-                            <Button type='subimit'>Cadastrar</Button>
+                            <Button type='subimit' id='singin-btn' onClick={register}>Cadastrar</Button>
                         </FormControl>
                     </form>
                 </Col>
                 <Col xs={0} sm={0} md={2} lg={4} xl={4} />
             </Row>
+            <Loading />
         </Container>
     )
 }
