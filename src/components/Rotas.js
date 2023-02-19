@@ -9,11 +9,11 @@ import { Singin } from '../pages/SingIn';
 export function Rotas() {
     const router = createBrowserRouter([
         {
-            path: '/',
+            path: '/home',
             element: <Home />
         },
         {
-            path: '/login',
+            path: '/',
             element: <Login />
         },
         {
@@ -21,7 +21,7 @@ export function Rotas() {
             element: <Chat />
         },
         {
-            path: 'singin',
+            path: '/singin',
             element: <Singin />
         }
     ])
