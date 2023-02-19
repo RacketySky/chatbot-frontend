@@ -1,34 +1,58 @@
-import { Container, Row, Col } from "react-bootstrap"
+import { Container, Row, Col, Button } from "react-bootstrap"
 import { slide as Slide } from 'react-burger-menu';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { Avatar } from '@mui/material';
 
 import '../App.css'
+import { useEffect, useState } from "react";
 
 export function Header(props) {
+    const [user, setUser] = useState();
+
+    const exit = (e) => {
+        e.preventDefault();
+        localStorage.clear();
+        window.location.href = `/`
+    }
+
+    useEffect(() => {
+        if (window.localStorage !== null) {
+            const data = localStorage.getItem('user')
+            const data1 = data.split(' ')
+            let f = data1[0]
+            let l = data1[data1.length - 1]
+
+            const firstN = f[0].toUpperCase() + f.substring(1, f.length).toLowerCase()
+            const secN = l[0].toUpperCase() + l.substring(1, l.length).toLowerCase()
+            localStorage.setItem('user', `${firstN} ${secN}`)
+            setUser(`${firstN} ${secN}`)
+        }
+    }, [])
+
+
     return (
         <Container fluid className="header">
             <Row className="h-100 align-items-center">
                 <Col xs={2} sm={2} md={1} xl={1} lg={1} className="ps-0">
                     <Slide customBurgerIcon={<GiHamburgerMenu />}>
-                        <a className="menu-item" href="/">
-                            Home
-                        </a>
-                        <a className="menu-item" href="/chat">
-                            Chat
-                        </a>
-                        <a className="menu-item" href="/login">
-                            Login
-                        </a>
-                        <a className="menu-item" href="/SingIn">
-                            Sing In
-                        </a>
+                        <Button variant="secondary" className="menu-item w-100" href="/home">
+                            Página Inicial
+                        </Button>
+                        <Button variant="secondary" className="menu-item w-100" href="/chat?type=1">
+                            Primeira Prova
+                        </Button>
+                        <Button variant="secondary" className="menu-item w-100" href="/chat?type=2">
+                            Segunda Prova
+                        </Button>
+                        <Button variant="secondary" className="menu-item w-100" onClick={exit}>
+                            Sair
+                        </Button>
                     </Slide>
                 </Col>
                 <Col xs={2} sm={2} md={8} xl={9} lg={9}></Col>
                 <Col xs={8} sm={8} md={3} xl={2} lg={2} className="text-end user-info">
-                    <span>User Name</span>
-                    <Avatar alt="User Name" src="./brokenimg" className="avatar"></Avatar>
+                    <span>{user}</span>
+                    <Avatar alt={user} src="./brokenimg" className="avatar"></Avatar>
                 </Col>
             </Row>
         </Container>
