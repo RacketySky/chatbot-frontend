@@ -11,7 +11,7 @@ export function Singin(props) {
     const [name, setName] = useState();
     const [reg, setReg] = useState();
     const [checked, setCheck] = useState(false);
-    console.log(email, password, name, reg)
+    // console.log(email, password, name, reg)
 
     useEffect(() => {
         var mat = document.getElementById('reg')
