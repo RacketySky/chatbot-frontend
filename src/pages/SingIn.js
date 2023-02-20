@@ -11,7 +11,7 @@ export function Singin(props) {
     const [name, setName] = useState();
     const [reg, setReg] = useState();
     const [checked, setCheck] = useState(false);
-    // console.log(email, password, name, reg)
+    console.log(email, password, name, reg)
 
     useEffect(() => {
         var mat = document.getElementById('reg')
@@ -21,19 +21,20 @@ export function Singin(props) {
             mat.removeAttribute("disabled")
         }
     })
-
+    useEffect(() => {
+        if (checked) {
+            setReg("0")
+        }
+    }, [checked])
     const register = async (e) => {
         e.preventDefault();
         document.getElementById('singin-btn').setAttribute('disabled', '');
         document.getElementById('loading').removeAttribute('hidden');
-        if (checked) {
-            setReg(0)
-        }
         await axios.post('https://chatbot-backend-hb2o.onrender.com/users', {
             name: name,
             email: email,
             password: password,
-            registration: reg
+            registration: reg.toString()
         })
             .then(res => {
                 window.location.href = `/`
