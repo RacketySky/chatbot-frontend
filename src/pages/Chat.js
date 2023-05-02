@@ -5,7 +5,11 @@ import { Header } from '../components/Header'
 import { Post } from '../components/Post'
 import Axios from 'axios';
 
+import Highlight from 'react-highlight'
+
+
 export function Chat(props) {
+
     const [seconds, setSeconds] = useState(0);
     const [minuties, setMinuties] = useState(0);
     const [timer, setTimer] = useState("00:00");
@@ -65,7 +69,8 @@ export function Chat(props) {
         if (dicas.length > 0) {
             const dica = dicas.shift()
             setTexts((texts) => [...texts, dica])
-        } else {
+        }
+        if (dicas.length <= 0) {
             var tip = document.getElementById('tip')
             tip.setAttribute("disabled", "")
         }
@@ -73,7 +78,10 @@ export function Chat(props) {
 
     const solut = () => {
         if (solution !== undefined) {
-            setTexts((texts) => [...texts, solution])
+            const test = <Highlight className='language-python'>
+                {solution}
+            </Highlight>
+            setTexts((texts) => [...texts, test])
             var tip = document.getElementById('solution')
             tip.setAttribute("disabled", "")
         }
@@ -92,6 +100,7 @@ export function Chat(props) {
                     'Authorization': `Bearer ${token}`
                 }
             })
+            window.location.reload(false)
         } else {
             window.location.reload(false)
         }

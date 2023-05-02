@@ -155,7 +155,8 @@ body {
 }
 
 .bot-response {
-  background-color: #00a0e9;
+  /* background-color: #00a0e9; */
+  background-color: #6ad0ff;
   height: auto;
   min-height: 120px;
   /* clip-path: polygon(
@@ -250,4 +251,29 @@ body {
   display: flex;
   align-items: center;
   text-align: center;
+}
+
+.hljs-keyword{
+  color:#a60000
+}
+
+.hljs-comment{
+  color: #000000a1;
+}
+
+.hljs-string{
+  color: #1209b6;
+}
+
+.hljs-subst{
+  color:#015e03;
+}
+
+.hljs-built_in{
+  color: red;
+}
+
+.hljs-number{
+  color: purple;
+  /* #6ad0ff */
 }
