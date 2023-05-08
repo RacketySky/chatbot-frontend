@@ -27,7 +27,7 @@ export function Login(props) {
                 window.location.href = '/home'
                 // return redirect("/home");
             })
-            .catch(() => console.log('failed'))
+            .catch(() => alert('failed'))
     }
 
 
