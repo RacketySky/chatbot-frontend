@@ -89,10 +89,10 @@ export function Chat(props) {
 
     // console.log(token)
     const nextQuestion = async (e) => {
-        if (minuties > 1 && token !== undefined) {
+        if (seconds > 10 && token !== undefined) {
             const allseconds = minuties * 60 + seconds
             e.preventDefault()
-            await Axios.patch(`https://chatbot-backend-hb2o.onrender.com/users/addQuestion/${question.id}`,
+            await Axios.patch(`https://chatbot-backend-hb2o.onrender.com/users/addQuestion/${question._id}`,
                 {
                     time: allseconds
                 }, {
@@ -139,8 +139,7 @@ export function Chat(props) {
                     </Col>
                 </Row>
                 <Row className='buttons'>
-                    <Col xs={2} sm={2} md={2} lg={2} xl={2}>
-                    </Col>
+                    <Col xs={2} sm={2} md={2} lg={2} xl={2}/>
                     <Col xs={8} sm={8} md={8} lg={8} xl={8} className='action-buttons'>
                         <Button type='button' id='tip' onClick={tip}>
                             Pedir Dica
@@ -152,8 +151,7 @@ export function Chat(props) {
                             Próxima Questão
                         </Button>
                     </Col>
-                    <Col xs={2} sm={2} md={2} lg={2} xl={2}>
-                    </Col>
+                    <Col xs={2} sm={2} md={2} lg={2} xl={2}/>
                 </Row>
             </Row>
         </Container>
