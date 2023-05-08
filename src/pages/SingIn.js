@@ -23,7 +23,7 @@ export function Singin(props) {
     })
     useEffect(() => {
         if (checked) {
-            setReg("0")
+            setReg(0)
         }
     }, [checked])
     const register = async (e) => {
@@ -38,9 +38,9 @@ export function Singin(props) {
         })
             .then(res => {
                 window.location.href = `/`
-                console.log(res)
+                // console.log(res)
             })
-            .catch(err => console.log(err))
+            .catch(err => alert(err))
     }
     return (
         <Container fluid className='background-login'>
