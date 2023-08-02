@@ -23,7 +23,7 @@ export function Home(props) {
         window.location.href = `/chat?type=${type}`
     }
 
-    const text = `Olá ${user}, me chamo bot, estou aqui para te ajudar a praticar questões de Algoritmos. Por favor selecione abaixo para qual prova você gostaria de praticar.`
+    const text = `Olá ${user}, me chamo CosmoBot, estou aqui para te ajudar a praticar questões de Algoritmos. Por favor selecione abaixo para qual prova você gostaria de praticar.`
     // console.log(typeof(isLogged))
     return (
         <Container fluid className="h-100">

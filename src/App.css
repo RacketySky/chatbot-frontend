@@ -195,6 +195,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0px !important;
 }
 
 .card-login {
@@ -250,4 +251,39 @@ body {
   display: flex;
   align-items: center;
   text-align: center;
+<<<<<<< Updated upstream
 }
+=======
+}
+
+.hljs-keyword {
+  color: #a60000;
+}
+
+.hljs-comment {
+  color: #000000a1;
+}
+
+.hljs-string {
+  color: #1209b6;
+}
+
+.hljs-subst {
+  color: #015e03;
+}
+
+.hljs-built_in {
+  color: red;
+}
+
+.hljs-number {
+  color: purple;
+  /* #6ad0ff */
+}
+
+@media (min-width: 356px) and (max-width: 768px) {
+  .card-login {
+    max-width: 400px !important;
+  }
+}
+>>>>>>> Stashed changes
