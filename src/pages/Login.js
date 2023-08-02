@@ -3,8 +3,9 @@ import { Container, Row, Col, Image, Button } from 'react-bootstrap';
 import { FormControl, TextField } from '@mui/material';
 import Axios from 'axios';
 import { Loading } from '../components/Loading'
-// import { redirect } from "react-router-dom";
 
+// import { redirect } from "react-router-dom";
+const uri = require('../uri.json')
 
 export function Login(props) {
     const [email, setEmail] = useState();
@@ -14,7 +15,7 @@ export function Login(props) {
         e.preventDefault();
         document.getElementById('login-btn').setAttribute('disabled', '');
         document.getElementById('loading').removeAttribute('hidden');
-        await Axios.post('https://chatbot-backend-hb2o.onrender.com/auth', {
+        await Axios.post(`${uri.prod}/auth`, {
             email,
             password
         })
@@ -27,7 +28,14 @@ export function Login(props) {
                 window.location.href = '/home'
                 // return redirect("/home");
             })
+<<<<<<< Updated upstream
             .catch(() => console.log('failed'))
+=======
+            .catch((err) => {
+                alert(err.message)
+                setTimeout(4000,window.location.href = '/')
+            })
+>>>>>>> Stashed changes
     }
 
 

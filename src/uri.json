@@ -1,0 +1,4 @@
+{
+    "dev": "http://localhost:9000",
+    "prod": "https://chatbot-backend-hb2o.onrender.com"
+}
