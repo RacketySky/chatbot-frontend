@@ -12,7 +12,7 @@ body {
 }
 
 .header {
-  background-color: #00139c;
+  background-color: #0d6efd;
   width: 100%;
   color: white;
   height: 55px;
@@ -32,7 +32,7 @@ body {
 
 /* General sidebar styles */
 .bm-menu {
-  background: #373a47;
+  background: #21215f;
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
 }
@@ -81,14 +81,33 @@ body {
 }
 
 .opn {
-  height: 90%;
+  height: 94.2%;
+  background-image: url("../public/back.png");
+}
+
+.opnChat{
+  height: 94.2%;
+  background-image: url("../public/background.webp");
+}
+
+.opnSides{
+  height: 100%;
+  background-color: rgb(57 57 57 / 60%);
+}
+
+.opnM {
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  background-color: rgb(57 57 57 / 60%);
 }
 
 .type {
   font-family: monospace;
-  color: #0000;
-  background: linear-gradient(-90deg, #000 5px, #0000 0) 10px 0,
-    linear-gradient(#000 0 0) 0 0;
+  color: #ffffff00;
+  background: linear-gradient(-90deg, #ffffff 5px, #ffffff00 0) 10px 0,
+    linear-gradient(#ffffff 0 0) 0 0;
   background-size: calc(var(--n) * 1ch) 200%;
   -webkit-background-clip: padding-box, text;
   background-clip: padding-box, text;
@@ -114,19 +133,20 @@ body {
 .infos {
   height: 10%;
   display: flex;
-  align-self: start;
-  align-items: center;
+  flex-direction: column;
+  align-content: space-between;
+  justify-content: center;
 }
 .chating {
   height: 80%;
   overflow-y: auto;
   flex-wrap: wrap-reverse !important;
+  background-color: rgb(57 57 57 / 85%);
 }
 .buttons {
   display: flex;
-  align-self: end;
   height: 10%;
-  align-items: center;
+
 }
 
 .btn-info {
@@ -151,6 +171,9 @@ body {
 
 .action-buttons {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
   justify-content: space-evenly;
 }
 
@@ -240,6 +263,7 @@ body {
 .menu-item {
   overflow: hidden;
   margin: 10px 0px;
+  background-color: #3f5ca7 !important;
 }
 
 .loading {
@@ -276,4 +300,10 @@ body {
 .hljs-number{
   color: purple;
   /* #6ad0ff */
+}
+
+@media (max-width: 767px) {
+  .opnSides{
+    display: none;
+  }
 }
