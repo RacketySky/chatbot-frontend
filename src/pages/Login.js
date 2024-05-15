@@ -36,7 +36,7 @@ export function Login(props) {
             <Row className='w-100 h-100 row-login'>
                 <Col xs={0} sm={0} md={2} lg={4} xl={4} />
                 <Col className='card-login' xs={12} sm={12} md={6} lg={4} xl={4}>
-                    <Image className="mt-2 mb-2" src='bot.png' width={55} />
+                    <Image className="mt-2 mb-2" src='cosmoBot.png' width={55} />
                     <form>
                         <FormControl >
                             <TextField
