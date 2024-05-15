@@ -111,16 +111,14 @@ export function Chat(props) {
             <Row>
                 <Header></Header>
             </Row>
-            <Row className="opn d-flex align-align-items-center">
-                <Row className='infos w-100'>
-                    <Col xs={4} sm={4} md={4} lg={4} xl={4} className='questions-info'>
-
+            <Row className="opnChat d-flex align-align-items-center">
+                <Row className='infos w-100 d-flex'>
+                    <Col xs={8} sm={7} md={4} lg={4} xl={4} className='questions-info'>
                         <button disabled className='btn-info'>
                             Questão de {question.period}
                         </button>
                     </Col>
-                    <Col xs={4} sm={4} md={4} lg={4} xl={4}>
-                    </Col>
+
                     <Col xs={4} sm={4} md={4} lg={4} xl={4} className='questions-info'>
                         <button disabled className='btn-info'>
                             {timer}
@@ -139,19 +137,23 @@ export function Chat(props) {
                     </Col>
                 </Row>
                 <Row className='buttons'>
-                    <Col xs={2} sm={2} md={2} lg={2} xl={2}/>
-                    <Col xs={8} sm={8} md={8} lg={8} xl={8} className='action-buttons'>
-                        <Button type='button' id='tip' onClick={tip}>
-                            Pedir Dica
-                        </Button>
-                        <Button type='button' id='solution' onClick={solut}>
-                            Mostrar Solução
-                        </Button>
-                        <Button type='button' id='next-question' onClick={nextQuestion}>
-                            Próxima Questão
-                        </Button>
+                    <Col xs={12} sm={12} md={12} lg={12} xl={12} className='action-buttons'>
+                        <div>
+                            <Button type='button' id='tip' onClick={tip}>
+                                Pedir Dica
+                            </Button>
+                        </div>
+                        <div>
+                            <Button type='button' id='solution' onClick={solut}>
+                                Mostrar Solução
+                            </Button>
+                        </div>
+                        <div>
+                            <Button type='button' id='next-question' onClick={nextQuestion}>
+                                Próxima Questão
+                            </Button>
+                        </div>
                     </Col>
-                    <Col xs={2} sm={2} md={2} lg={2} xl={2}/>
                 </Row>
             </Row>
         </Container>
