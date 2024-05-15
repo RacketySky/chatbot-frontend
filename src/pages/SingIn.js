@@ -9,23 +9,23 @@ export function Singin(props) {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [name, setName] = useState();
-    const [reg, setReg] = useState();
-    const [checked, setCheck] = useState(false);
+    const [reg, setReg] = useState(0);
+    // const [checked, setCheck] = useState(false);
     // console.log(email, password, name, reg)
 
-    useEffect(() => {
-        var mat = document.getElementById('reg')
-        if (checked) {
-            mat.setAttribute("disabled", true)
-        } else {
-            mat.removeAttribute("disabled")
-        }
-    })
-    useEffect(() => {
-        if (checked) {
-            setReg(0)
-        }
-    }, [checked])
+    // useEffect(() => {
+    //     var mat = document.getElementById('reg')
+    //     if (checked) {
+    //         mat.setAttribute("disabled", true)
+    //     } else {
+    //         mat.removeAttribute("disabled")
+    //     }
+    // })
+    // useEffect(() => {
+    //     if (checked) {
+    //         setReg(0)
+    //     }
+    // }, [checked])
     const register = async (e) => {
         e.preventDefault();
         document.getElementById('singin-btn').setAttribute('disabled', '');
@@ -47,7 +47,7 @@ export function Singin(props) {
             <Row className='w-100 h-100 row-login'>
                 <Col xs={0} sm={0} md={2} lg={4} xl={4} />
                 <Col className='card-login card-singin' xs={12} sm={12} md={6} lg={4} xl={4}>
-                    <Image className="" src='bot.png' width={55} />
+                    <Image className="" src='cosmoBot.png' width={65} />
                     <form>
                         <FormControl>
                             <TextField
@@ -71,7 +71,7 @@ export function Singin(props) {
                                 onChange={(e) => setEmail(e.target.value)}
                             />
                             {/* <Checkbox>Não Possuo Matricula</Checkbox> */}
-                            <TextField
+                            {/* <TextField
                                 className=""
                                 id="reg"
                                 label="Matrícula"
@@ -87,7 +87,7 @@ export function Singin(props) {
                                     <Checkbox sx={{ '& .MuiSvgIcon-root': { fontSize: 25 } }} checked={checked} onClick={() => setCheck(!checked)} name="checkbox" />
                                 }
                                 label="Não possuo Matrícula"
-                            />
+                            /> */}
                             <TextField
                                 className="mt-3 mb-3"
                                 id="password"
