@@ -33,7 +33,7 @@ export function Header(props) {
     return (
         <Container fluid className="header">
             <Row className="h-100 align-items-center">
-                <Col xs={2} sm={2} md={1} xl={1} lg={1} className="ps-0">
+                <Col xs={2} sm={2} md={2} xl={1} lg={1} className="ps-0">
                     <Slide customBurgerIcon={<GiHamburgerMenu />}>
                         <Button variant="secondary" className="menu-item w-100" href="/home">
                             Página Inicial
@@ -49,8 +49,8 @@ export function Header(props) {
                         </Button>
                     </Slide>
                 </Col>
-                <Col xs={2} sm={2} md={8} xl={9} lg={9}></Col>
-                <Col xs={8} sm={8} md={3} xl={2} lg={2} className="text-end user-info">
+                <Col xs={1} sm={5} md={5} xl={8} lg={8}></Col>
+                <Col xs={8} sm={5} md={5} xl={3} lg={3} className="text-end user-info">
                     <span>{user}</span>
                     <Avatar alt={user} src="./brokenimg" className="avatar"></Avatar>
                 </Col>
