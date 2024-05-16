@@ -34,6 +34,7 @@ export function Login(props) {
     return (
         <Container fluid className='background-login'>
             <Row className='h-100 row-login'>
+                <Col xs={12} sm={12} md={12} lg={12} xl={12} className='textBot'>CosmoBot</Col>
                 <Col xs={0} sm={0} md={2} lg={4} xl={4} />
                 <Col className='card-login' xs={12} sm={12} md={6} lg={4} xl={4}>
                     <Image className="mt-2 mb-2" src='cosmoBot.png' width={55} />
